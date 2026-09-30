@@ -1,0 +1,8 @@
+\title "Downpicked Thrash Riff"
+\artist "Original exercise"
+\tempo 190
+\track "Rhythm Guitar"
+:8 0.6{pm} 0.6{pm} (7.5 9.4) 0.6{pm} 0.6{pm} (6.5 8.4) 0.6{pm} (5.5 7.4) |
+:8 0.6{pm} 0.6{pm} (7.5 9.4) 0.6{pm} :4 (3.5 5.4) (5.5 7.4) |
+:8 0.6{pm} 0.6{pm} (7.5 9.4) 0.6{pm} 0.6{pm} (6.5 8.4) 0.6{pm} (5.5 7.4) |
+:8 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} :2 (0.6 2.5 2.4)

@@ -19,7 +19,7 @@ export const DRUM_STYLES = {
     dbeat: 'D-beat',
     follow: 'Kick follows the riff (half-time)',
     shuffle: 'Shuffle',
-    punk: 'Punk skank beat',
+    punk: 'Punk / thrash skank beat',
     industrial: 'Industrial four-on-the-floor',
     twostep: 'Country two-step',
 };

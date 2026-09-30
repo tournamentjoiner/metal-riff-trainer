@@ -46,7 +46,7 @@ Some video owners block playback outside YouTube. If a video won't play, the app
 - **Mute this track.** Silences the displayed guitar part so you can play it yourself over the rest of the band (for multi-track files).
 - **Practice log.** Records time practiced, sessions, best speed/BPM, a goal-tempo progress bar per song, and a day streak.
 - **Technique tags** (gallops, downpicking, tremolo picking…) with technique and level filters in the sidebar.
-- **54 original technique drills** in ten categories, each with a difficulty level, a goal tempo and a practice tip:
+- **62 original technique drills** in twelve categories, each with a difficulty level, a goal tempo and a practice tip:
 
   | Category | Drills |
   |---|---|
@@ -56,6 +56,8 @@ Some video owners block playback outside YouTube. If a video won't play, the app
   | Lead | Pentatonic Fours, Minor Scale Sextuplets, Harmonic Minor Pedal, Three-String Sweeps, Diminished Shifts |
   | Legato & Expression | Legato Trills, Vibrato Control, Bending Accuracy, Legato Three-Note Runs, Pinch Harmonic Squeals |
   | Death Metal | Chromatic Tremolo Crawl, Tritone Tremolo, Single-String Death Runs, Tremolo Endurance, Slam Groove, Triplet Burst Chugs, Stop-Start in 7/8, D-Beat Buzzsaw, Death 'n' Roll Shuffle, Buzzsaw Tremolo Melody, Death Metal Gauntlet (final test) |
+  | Black Metal | Waltz of the North, Minor Chord Tremolo, Harmonic Minor Tremolo, Tremolo Arpeggios |
+  | Thrash | Chug and Stab, Downpicked Thrash Riff, Chromatic Skank Riff, Pedal String Crossing |
   | Deathcore | Downtempo Dead Stops, Half-Time Breakdown, Polyrhythmic Breakdown, Blast to Breakdown |
   | Industrial | Staccato Stomp, Machine Accents, Octave Synth Line, Kick-Sync Chugs |
   | Punk | All-Downstroke Eighths, Mute to Open, Skate Punk Sixteenths, Chromatic Walk-Ups |
@@ -63,10 +65,10 @@ Some video owners block playback outside YouTube. If a video won't play, the app
 
   The Death Metal drills are original riffs in the styles of Cannibal Corpse (tremolo, chromatic and tritone lines), Dying Fetus (slams, syncopation, triplet bursts, odd meters) and Entombed (d-beat buzzsaw, death 'n' roll, tremolo melodies). They're aimed at intermediate players and all use Drop D. Each lists its time signature and a start → goal tempo (e.g. `4/4 · ♩ 100→170`). The speed trainer is pre-set to climb from the start tempo to the goal. The pass mark is 3 clean loops in a row at the goal tempo with the click on.
 
-  The genre drills work the same way, each with a start → goal tempo and the same pass mark. **Deathcore** (Drop C) covers breakdowns, dead stops, 3-against-4 polyrhythms and blast-to-breakdown transitions, in the styles of Suicide Silence, Thy Art Is Murder and Whitechapel. **Industrial** (Drop D) is machine-tight staccato, accents and octave "synth" lines like Rammstein, Ministry, Nine Inch Nails and Fear Factory. **Punk** (E standard) covers downstroke endurance, palm-mute-to-open dynamics, skate-punk 16ths and chromatic walk-ups. **Country** (E standard; switches to the Clean tone while open) covers boom-chick bass lines, Travis picking, chicken pickin' and pedal-steel double-stop bends.
+  The genre drills work the same way, each with a start → goal tempo and the same pass mark. **Black Metal** (E standard) covers tremolo-picked minor chords, harmonic-minor tremolo melodies and tremolo arpeggios over blast beats, plus a Bathory-style 3/4 waltz, in the styles of Darkthrone, Mayhem, Dissection and Bathory. **Thrash** (E standard) covers chug-and-stab rhythms, all-downstroke riffs, chromatic skank-beat riffs and pedal-point string crossing like Exodus, Metallica, Slayer and Megadeth. **Deathcore** (Drop C) covers breakdowns, dead stops, 3-against-4 polyrhythms and blast-to-breakdown transitions, in the styles of Suicide Silence, Thy Art Is Murder and Whitechapel. **Industrial** (Drop D) is machine-tight staccato, accents and octave "synth" lines like Rammstein, Ministry, Nine Inch Nails and Fear Factory. **Punk** (E standard) covers downstroke endurance, palm-mute-to-open dynamics, skate-punk 16ths and chromatic walk-ups. **Country** (E standard; switches to the Clean tone while open) covers boom-chick bass lines, Travis picking, chicken pickin' and pedal-steel double-stop bends.
 
   To add your own drill, write a `.alphatex` file in `public/drills/` and add an entry to `public/js/drills.js`. `npm test` checks that it parses and that every bar is a full 4/4 bar.
-- **Drums and guitar tone.** Every drill plays with a generated drum track that fits its style: blast beats and double kick for tremolo drills, d-beat, a half-time groove whose kick follows the riff for slams and chugs, a shuffle, a punk skank beat, a straight industrial beat, a country two-step, or a rock beat. It follows each bar's time signature. **Drums** (or the D key) turns them on and off. **Tone** sets the guitar sound to Distortion, Crunch, Clean, or the file's own sound; it also applies to guitar tracks in your Guitar Pro files, while bass and drums are left alone. Sounds come from the built-in General MIDI sound library, so they're synthesized rather than a real amp.
+- **Drums and guitar tone.** Every drill plays with a generated drum track that fits its style: blast beats and double kick for tremolo drills, d-beat, a half-time groove whose kick follows the riff for slams and chugs, a shuffle, a punk/thrash skank beat, a straight industrial beat, a country two-step, or a rock beat. It follows each bar's time signature. **Drums** (or the D key) turns them on and off. **Tone** sets the guitar sound to Distortion, Crunch, Clean, or the file's own sound; it also applies to guitar tracks in your Guitar Pro files, while bass and drums are left alone. Sounds come from the built-in General MIDI sound library, so they're synthesized rather than a real amp.
 - Metronome click, count-in, tab-only or tab + standard notation view.
 
 ### Keyboard shortcuts

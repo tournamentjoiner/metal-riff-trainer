@@ -3,7 +3,7 @@
 
 export const CATEGORIES = [
     'Rhythm', 'Drop D', 'Picking', 'Lead', 'Legato & Expression',
-    'Death Metal', 'Deathcore', 'Industrial', 'Punk', 'Country',
+    'Death Metal', 'Black Metal', 'Thrash', 'Deathcore', 'Industrial', 'Punk', 'Country',
 ];
 export const LEVELS = { 1: 'Beginner', 2: 'Intermediate', 3: 'Advanced' };
 
@@ -352,6 +352,88 @@ export const DRILLS = [
         tip: 'The final test. 12 bars: tremolo and tritones, d-beat, a 7/8 bar, triplet bursts, then a half-time slam (the tempo drops from 160 to 100 at bar 7) and back up for the ending. Click on. Pass: one clean run at 100% speed.',
     },
 
+    /* ---------- Black Metal ----------
+     * Original riffs in the styles of Darkthrone, Mayhem, Dissection and Bathory:
+     * tremolo-picked minor chords and melodies over blast beats. E standard.
+     */
+    {
+        file: 'bm-waltz-of-the-north.alphatex',
+        title: 'Waltz of the North',
+        category: 'Black Metal', level: 1,
+        style: 'Bathory-style',
+        tags: ['open chords', 'odd meter', 'black metal'],
+        meter: '3/4', startTempo: 90, targetTempo: 130,
+        tip: 'Metronome: quarter notes, three clicks per bar. Epic mid-tempo strumming in 3/4 with open strings left ringing. Accent beat 1 of each bar and let the last chord ring out. Pass: 3 clean loops at 130.',
+    },
+    {
+        file: 'bm-minor-chord-tremolo.alphatex',
+        title: 'Minor Chord Tremolo',
+        category: 'Black Metal', level: 2,
+        style: 'Darkthrone-style',
+        tags: ['tremolo picking', 'chords', 'black metal'],
+        meter: '4/4', startTempo: 90, targetTempo: 150,
+        tip: 'Metronome: 16ths. Tremolo pick a four-string minor barre shape (Em, Cm, Dm, Bm) moving between unrelated minor chords. Pick from the wrist across all four strings, and keep the shape pressed down so every note rings. Pass: 3 clean loops at 150.',
+    },
+    {
+        file: 'bm-harmonic-minor-tremolo.alphatex',
+        title: 'Harmonic Minor Tremolo',
+        category: 'Black Metal', level: 2,
+        style: 'Mayhem-style',
+        tags: ['tremolo picking', 'melody', 'harmonic minor', 'black metal'],
+        meter: '4/4', startTempo: 110, targetTempo: 170,
+        tip: 'Metronome: 16ths. A tremolo-picked melody on the B string in E harmonic minor; the D# (4th fret) gives it the cold sound. Shift fingers on the click with no gap in the picking. Pass: 3 clean loops at 170.',
+    },
+    {
+        file: 'bm-tremolo-arpeggios.alphatex',
+        title: 'Tremolo Arpeggios',
+        category: 'Black Metal', level: 3,
+        style: 'Dissection-style',
+        tags: ['tremolo picking', 'arpeggios', 'string crossing', 'black metal'],
+        meter: '4/4', startTempo: 90, targetTempo: 150,
+        tip: 'Metronome: 16ths. Hold each chord shape and tremolo pick its notes one string at a time, four picks per note. Crossing strings without breaking the tremolo is the skill; keep the pick angle the same on every string. Pass: 3 clean loops at 150.',
+    },
+
+    /* ---------- Thrash ----------
+     * Original riffs in the styles of Slayer, Metallica, Megadeth and Exodus.
+     * E standard.
+     */
+    {
+        file: 'th-chug-and-stab.alphatex',
+        title: 'Chug and Stab',
+        category: 'Thrash', level: 1,
+        style: 'Exodus-style',
+        tags: ['palm muting', 'staccato', 'power chords', 'thrash'],
+        meter: '4/4', startTempo: 110, targetTempo: 160,
+        tip: 'Metronome: quarter notes. Four tight 16th chugs, then a short chord stab that you choke off right away. The rests are the point: silence both hands on every one. Pass: 3 clean loops at 160.',
+    },
+    {
+        file: 'th-downpicked-thrash-riff.alphatex',
+        title: 'Downpicked Thrash Riff',
+        category: 'Thrash', level: 2,
+        style: 'Metallica-style',
+        tags: ['downpicking', 'palm muting', 'endurance', 'thrash'],
+        meter: '4/4', startTempo: 130, targetTempo: 190,
+        tip: 'Metronome: quarter notes, two picks per click. All downstrokes: a muted low E pedal with fifths on the A and D strings. Drive from the wrist and keep the stroke short so you can hold it at 190. Pass: 3 clean loops at 190.',
+    },
+    {
+        file: 'th-chromatic-skank-riff.alphatex',
+        title: 'Chromatic Skank Riff',
+        category: 'Thrash', level: 2,
+        style: 'Slayer-style',
+        tags: ['alternate picking', 'chromatic', 'palm muting', 'thrash'],
+        meter: '4/4', startTempo: 100, targetTempo: 160,
+        tip: 'Metronome: 16ths. Alternate pick a muted low E with chromatic notes cutting in on the same string, over a skank beat. Let the fretted notes pop out of the palm mute slightly. Pass: 3 clean loops at 160.',
+    },
+    {
+        file: 'th-pedal-string-crossing.alphatex',
+        title: 'Pedal String Crossing',
+        category: 'Thrash', level: 3,
+        style: 'Megadeth-style',
+        tags: ['alternate picking', 'pedal point', 'string crossing', 'thrash'],
+        meter: '4/4', startTempo: 110, targetTempo: 170,
+        tip: 'Metronome: 16ths. Strict alternate picking between the muted low E and a melody on the A string. Every string change happens on a different pick direction, so go slow until it stays even. Pass: 3 clean loops at 170.',
+    },
+
     /* ---------- Deathcore ----------
      * Original breakdowns and blast sections in the styles of Suicide Silence,
      * Thy Art Is Murder and Whitechapel. Drop C (the bands often go lower still;
@@ -542,6 +624,14 @@ const DRUM_GROOVES = {
         'blast', 'blast', 'dbeat', 'dbeat', 'follow', 'double-kick',
         'follow', 'follow', 'follow', 'follow', 'blast', 'blast',
     ],
+    'bm-waltz-of-the-north.alphatex': 'follow',
+    'bm-minor-chord-tremolo.alphatex': 'blast',
+    'bm-harmonic-minor-tremolo.alphatex': 'blast',
+    'bm-tremolo-arpeggios.alphatex': 'blast',
+    'th-chug-and-stab.alphatex': 'follow',
+    'th-downpicked-thrash-riff.alphatex': 'double-kick',
+    'th-chromatic-skank-riff.alphatex': 'punk',
+    'th-pedal-string-crossing.alphatex': 'double-kick',
     'dc-downtempo-dead-stops.alphatex': 'follow',
     'dc-half-time-breakdown.alphatex': 'follow',
     'dc-polyrhythmic-breakdown.alphatex': 'follow',
