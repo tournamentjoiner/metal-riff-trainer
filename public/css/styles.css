@@ -1,0 +1,484 @@
+:root {
+    --bg: #0e0e10;
+    --panel: #17171a;
+    --panel-2: #1f1f23;
+    --line: #2c2c31;
+    --text: #e9e7e4;
+    --muted: #8d8a86;
+    --accent: #d42a2a;
+    --accent-hi: #ff4a3d;
+    --ok: #4caf6a;
+    --paper: #f6f4ef;
+    --radius: 8px;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+}
+
+h1, h2, h3 { margin: 0; font-weight: 700; }
+button, input, select { font: inherit; color: inherit; }
+
+.muted { color: var(--muted); }
+.small { font-size: 12px; }
+
+.app {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    height: 100vh;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+    background: var(--panel);
+    border-right: 1px solid var(--line);
+    padding: 18px 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand h1 { font-size: 17px; letter-spacing: 0.06em; text-transform: uppercase; }
+.brand-mark { color: var(--accent); font-size: 18px; }
+
+.sidebar h2 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+
+.add-song span {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    border: 1px dashed var(--accent);
+    border-radius: var(--radius);
+    color: var(--accent-hi);
+    cursor: pointer;
+    font-weight: 600;
+}
+.add-song span:hover { background: rgba(212, 42, 42, 0.08); }
+.hint { margin: -6px 0 0; font-size: 12px; color: var(--muted); }
+
+.song-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.song-list button {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    padding: 8px 10px;
+    cursor: pointer;
+}
+.song-list button:hover { background: var(--panel-2); }
+.song-list button[aria-current="true"] { background: var(--panel-2); border-color: var(--accent); }
+.song-list .title { display: block; font-weight: 600; }
+.song-list .meta { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; }
+.empty { font-size: 12px; color: var(--muted); margin: 0; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.filters { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.filters select { width: 100%; padding: 6px 8px; font-size: 13px; }
+
+.count { color: var(--muted); font-weight: 400; letter-spacing: 0; }
+
+.drill-group { margin-bottom: 6px; }
+.drill-group summary {
+    cursor: pointer;
+    padding: 6px 4px;
+    font-weight: 700;
+    font-size: 13px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 4px;
+    user-select: none;
+}
+.drill-group summary:hover { color: var(--accent-hi); }
+
+.level {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 1px 6px;
+    border-radius: 999px;
+    vertical-align: 1px;
+    border: 1px solid currentColor;
+}
+.level-beginner { color: var(--ok); }
+.level-intermediate { color: #e0a93b; }
+.level-advanced { color: var(--accent-hi); }
+
+.tip {
+    margin: 6px 0 0;
+    max-width: 70ch;
+    font-size: 13px;
+    color: var(--text);
+    border-left: 3px solid var(--accent);
+    padding-left: 10px;
+}
+.chip {
+    font-size: 12px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    cursor: pointer;
+}
+.chip[aria-pressed="true"] { border-color: var(--accent); color: var(--accent-hi); }
+.chip .x { margin-left: 4px; color: var(--muted); }
+.tags input {
+    width: 130px;
+    background: transparent;
+    border: 1px dashed var(--line);
+    border-radius: 999px;
+    padding: 3px 9px;
+    font-size: 12px;
+}
+
+.overall { margin-top: auto; border-top: 1px solid var(--line); padding-top: 12px; font-size: 12px; color: var(--muted); }
+.overall strong { color: var(--text); }
+
+/* ---------- Main ---------- */
+.main {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100vh;
+}
+
+.song-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px 10px;
+}
+.song-header h2 { font-size: 22px; }
+.song-header p { margin: 2px 0 0; }
+.song-header-actions { display: flex; gap: 8px; align-items: center; }
+
+button, select {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 7px 12px;
+    cursor: pointer;
+}
+button:hover:not(:disabled) { border-color: var(--muted); }
+button:disabled, select:disabled { opacity: 0.45; cursor: not-allowed; }
+button.primary { background: var(--accent); border-color: var(--accent); font-weight: 700; min-width: 96px; }
+button.primary:hover:not(:disabled) { background: var(--accent-hi); border-color: var(--accent-hi); }
+button.ghost { background: transparent; }
+button.danger { color: #ff7b72; }
+button.active { border-color: var(--accent); color: var(--accent-hi); }
+
+:focus-visible { outline: 2px solid var(--accent-hi); outline-offset: 2px; }
+
+.transport {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--panel);
+}
+.speed { display: flex; align-items: center; gap: 8px; }
+.speed input[type="range"] { width: 160px; accent-color: var(--accent); }
+.speed output { font-variant-numeric: tabular-nums; min-width: 42px; font-weight: 700; }
+.toggle { display: flex; align-items: center; gap: 5px; cursor: pointer; user-select: none; }
+.toggle input { accent-color: var(--accent); }
+
+.practice-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 12px 20px;
+}
+.panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.panel h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; }
+.panel p { margin: 0; }
+
+.trainer-fields { display: flex; flex-wrap: wrap; gap: 10px; }
+.trainer-fields label, .goal label { display: flex; align-items: center; gap: 4px; font-size: 13px; }
+input[type="number"] {
+    width: 58px;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 4px 6px;
+}
+.trainer-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+#tr-status { font-variant-numeric: tabular-nums; }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 0; }
+.stats div { background: var(--panel-2); border-radius: 6px; padding: 6px 8px; }
+.stats dt { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.stats dd { margin: 2px 0 0; font-size: 16px; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.goal { display: flex; align-items: center; gap: 10px; }
+.meter { flex: 1; height: 8px; background: var(--panel-2); border-radius: 999px; overflow: hidden; }
+.meter span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent-hi)); transition: width 0.3s; }
+.meter.reached span { background: var(--ok); }
+
+/* ---------- Score ---------- */
+.score-wrap {
+    position: relative;
+    flex: 1;
+    overflow-y: auto;
+    margin: 0 20px 20px;
+    background: var(--paper);
+    border-radius: var(--radius);
+    color: #111;
+}
+.score-hint { margin: 0; padding: 10px 16px 0; font-size: 12px; color: #6b6660; }
+.loading {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--accent);
+    color: #fff;
+    text-align: center;
+    padding: 6px;
+    font-weight: 600;
+}
+
+/* alphaTab cursor + selection styling */
+.at-cursor-bar { background: rgba(212, 42, 42, 0.08); }
+.at-selection div { background: rgba(212, 42, 42, 0.18); }
+.at-cursor-beat { background: var(--accent); width: 3px; }
+.at-highlight * { fill: var(--accent); stroke: var(--accent); }
+
+/* ---------- YouTube ---------- */
+.yt-add { display: flex; gap: 6px; }
+.yt-add input {
+    flex: 1;
+    min-width: 0;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 7px 10px;
+}
+.yt-add input:focus { border-color: var(--accent); outline: none; }
+
+.riff-list { margin: 2px 0 4px 14px; padding-left: 8px; border-left: 2px solid var(--line); }
+.riff-list button { padding: 5px 8px; }
+.riff-list .title { font-weight: 500; }
+
+.video-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.video-frame {
+    position: relative;
+    width: 100%;
+    max-width: calc(52vh * 16 / 9);
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
+    background: #000;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+.video-frame iframe, .video-frame > div { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* The area scrolls; don't let flexbox squash the video or panels to fit. */
+.video-area > * { flex-shrink: 0; }
+
+/* Shrink the video when a riff's tab is showing so both fit on screen. */
+.video-area.has-tab .video-frame { max-width: calc(34vh * 16 / 9); }
+
+.tab-head-actions, .tab-empty-actions, .tab-form-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.tab-empty p { margin: 0 0 8px; }
+.tab-form { display: flex; flex-direction: column; gap: 8px; }
+.tab-form textarea {
+    width: 100%;
+    font: 13px/1.35 ui-monospace, "Cascadia Mono", Consolas, monospace;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 8px 10px;
+    color: var(--text);
+    resize: vertical;
+    white-space: pre;
+    overflow-x: auto;
+}
+.tab-link-fields { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.tab-link-fields label { display: flex; align-items: center; gap: 6px; font-size: 13px; }
+.tab-link-fields select { max-width: 280px; }
+#tab-note:empty, #tab-paste-status:empty, #tab-link-status:empty { display: none; }
+.tab-view {
+    background: var(--paper);
+    border-radius: 6px;
+    max-height: 46vh;
+    overflow-y: auto;
+    color: #111;
+}
+
+.riff-editor-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+kbd {
+    font: 11px ui-monospace, monospace;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0 5px;
+}
+
+.timeline {
+    position: relative;
+    height: 30px;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    cursor: pointer;
+    overflow: hidden;
+}
+.timeline-riff {
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    min-width: 4px;
+    padding: 0;
+    border-radius: 4px;
+    background: rgba(212, 42, 42, 0.35);
+    border: 1px solid var(--accent);
+}
+.timeline-riff.active { background: var(--accent); }
+.timeline-draft {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: rgba(233, 231, 228, 0.12);
+    border-left: 2px dashed var(--text);
+    border-right: 2px dashed var(--text);
+    pointer-events: none;
+}
+.timeline-playhead {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #fff;
+    pointer-events: none;
+}
+
+.riff-fields, .riff-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.riff-fields label { display: flex; align-items: center; gap: 4px; font-size: 13px; }
+.riff-fields input {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 6px 8px;
+}
+.riff-name { flex: 1 1 200px; min-width: 0; }
+.riff-fields input.time { width: 78px; font-variant-numeric: tabular-nums; }
+
+/* ---------- Share ---------- */
+.share-wrap { position: relative; }
+#share-btn { border-color: var(--accent); font-weight: 600; }
+.share-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 6px);
+    z-index: 50;
+    width: 260px;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.share-menu a, .share-menu button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 9px 10px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+.share-menu a:hover, .share-menu button:hover { background: var(--panel); }
+.share-note {
+    margin: 4px 4px 2px;
+    padding-top: 6px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* ---------- Overlays ---------- */
+.drop-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(14, 14, 16, 0.85);
+    border: 3px dashed var(--accent);
+    display: grid;
+    place-items: center;
+    font-size: 22px;
+    font-weight: 700;
+    z-index: 100;
+}
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 10px 16px;
+    z-index: 101;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+    /* Never block the controls underneath (e.g. Save right after adding a video). */
+    pointer-events: none;
+    max-width: calc(100vw - 32px);
+}
+.toast.error { border-color: var(--accent); }
+
+[hidden] { display: none !important; }
+
+@media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; height: auto; }
+    .sidebar { border-right: none; border-bottom: 1px solid var(--line); }
+    /* Player first on phones, so a shared drill link opens straight onto the drill. */
+    .main { height: auto; order: -1; }
+    .practice-row { grid-template-columns: 1fr; padding: 12px 16px; }
+    .score-wrap { margin: 0 16px 16px; min-height: 70vh; }
+    .video-area { padding: 0 16px 16px; }
+    .video-frame { max-width: 100%; }
+    .song-header, .transport { padding-left: 16px; padding-right: 16px; }
+    .song-header { flex-wrap: wrap; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+}

@@ -1,0 +1,8 @@
+\title "Vibrato Control"
+\artist "Original exercise"
+\tempo 70
+\track "Lead Guitar"
+:2 14.3{v} 12.2{v} |
+:2 15.2{v} 12.1{v} |
+:4 14.3 14.3{b (0 4)} :2 14.3{v} |
+:1 12.1{v}

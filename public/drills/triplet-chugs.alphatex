@@ -1,0 +1,8 @@
+\title "Triplet Chugs"
+\artist "Original exercise"
+\tempo 100
+\track "Rhythm Guitar"
+:8 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} (3.6 5.5){tu 3} 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} (5.6 7.5){tu 3} (3.6 5.5){tu 3} |
+:8 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} (1.6 3.5){tu 3} 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} (3.6 5.5){tu 3} (1.6 3.5){tu 3} |
+:8 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} (3.6 5.5){tu 3} 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} (5.6 7.5){tu 3} (7.6 9.5){tu 3} |
+:8 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} 0.6{pm tu 3} :2 (0.6 2.5)

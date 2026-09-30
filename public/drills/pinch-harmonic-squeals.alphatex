@@ -1,0 +1,8 @@
+\title "Pinch Harmonic Squeals"
+\artist "Original exercise"
+\tempo 100
+\track "Lead Guitar"
+:8 0.6{pm} 0.6{pm} :4 5.3{ph} :8 0.6{pm} 0.6{pm} :4 7.3{ph} |
+:8 0.6{pm} 0.6{pm} :4 3.4{ph} :8 0.6{pm} 0.6{pm} :4 5.4{ph} |
+:8 0.6{pm} 0.6{pm} :4 5.3{ph} :8 0.6{pm} 0.6{pm} :4 7.3{ph b (0 4)} |
+:8 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} :2 5.3{ph b (0 4)}

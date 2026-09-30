@@ -1,0 +1,8 @@
+\title "Syncopated Chugs"
+\artist "Original exercise"
+\tempo 90
+\track "Rhythm Guitar"
+:16 0.6{pm} r 0.6{pm} 0.6{pm} r 0.6{pm} r 0.6{pm} 0.6{pm} r 0.6{pm} r (0.6 2.5 2.4) r r r |
+:16 0.6{pm} 0.6{pm} r 0.6{pm} 0.6{pm} r 0.6{pm} 0.6{pm} r (1.6 3.5 3.4) r (1.6 3.5 3.4) r 0.6{pm} 0.6{pm} r |
+:16 0.6{pm} r 0.6{pm} 0.6{pm} r 0.6{pm} r 0.6{pm} 0.6{pm} r 0.6{pm} r (0.6 2.5 2.4) r r r |
+:16 0.6{pm} r 0.6{pm} 0.6{pm} r 0.6{pm} r 0.6{pm} :2 (0.6 2.5 2.4)

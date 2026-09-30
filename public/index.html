@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Metal Riff Trainer</title>
+    <meta name="description" content="Free metal guitar practice app: synced tab player, speed trainer, 38 technique drills with drums, and YouTube riff looping.">
+    <meta name="theme-color" content="#0e0e10">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+    <!-- Link previews for Facebook, texts and other apps. __SITE_URL__ is filled in by `npm run build`. -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Metal Riff Trainer">
+    <meta property="og:title" content="Metal Riff Trainer">
+    <meta property="og:description" content="Free metal guitar practice: tab player, speed trainer, 38 drills with drums (including death metal), and YouTube riff looping.">
+    <meta property="og:url" content="__SITE_URL__">
+    <meta property="og:image" content="__SITE_URL__img/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Metal Riff Trainer: guitar tab with a red playhead">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 1 15 15H1z' fill='%23d42a2a'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="vendor/alphatab/alphaTab.js"></script>
+    <script type="module" src="js/app.js"></script>
+</head>
+<body>
+<div class="app">
+    <aside class="sidebar" aria-label="Library">
+        <header class="brand">
+            <span class="brand-mark" aria-hidden="true">▲</span>
+            <h1>Metal Riff Trainer</h1>
+        </header>
+
+        <label class="add-song">
+            <input type="file" id="file-input" accept=".gp,.gp3,.gp4,.gp5,.gpx,.gp7,.xml,.musicxml,.mxl,.cap" hidden>
+            <span>+ Add tab file</span>
+        </label>
+        <form class="yt-add" id="yt-add">
+            <input id="yt-url" type="text" inputmode="url" autocomplete="off"
+                   placeholder="Paste a YouTube link" aria-label="YouTube link">
+            <button type="submit">Add</button>
+        </form>
+        <p class="hint">Drag a YouTube link or a Guitar Pro / MusicXML file anywhere onto the page, or paste a link with Ctrl+V.</p>
+
+        <div class="filters">
+            <select id="tag-filter" aria-label="Filter by technique">
+                <option value="">All techniques</option>
+            </select>
+            <select id="level-filter" aria-label="Filter by level">
+                <option value="">All levels</option>
+            </select>
+        </div>
+
+        <section>
+            <h2>YouTube songs</h2>
+            <ul class="song-list" id="video-list"></ul>
+            <p class="empty" id="video-list-empty">No videos yet. Drop a YouTube link here to start.</p>
+        </section>
+
+        <section>
+            <h2>My songs</h2>
+            <ul class="song-list" id="song-list"></ul>
+            <p class="empty" id="song-list-empty">No songs yet. Add a Guitar Pro file you own to start.</p>
+        </section>
+
+        <section>
+            <h2>Technique drills <span class="count" id="drill-count"></span></h2>
+            <div id="drill-groups"></div>
+            <p class="empty" id="drill-list-empty" hidden>No drills match these filters.</p>
+        </section>
+
+        <section class="overall" id="overall-stats"></section>
+    </aside>
+
+    <main class="main">
+        <header class="song-header">
+            <div>
+                <h2 id="song-title">Pick a song or drill</h2>
+                <p id="song-artist" class="muted"></p>
+                <p id="song-tip" class="tip" hidden></p>
+            </div>
+            <div class="song-header-actions">
+                <div class="share-wrap">
+                    <button id="share-btn" aria-haspopup="menu" aria-expanded="false" aria-controls="share-menu">Share</button>
+                    <div class="share-menu" id="share-menu" role="menu" hidden>
+                        <a id="share-sms" role="menuitem" href="#">Text message</a>
+                        <a id="share-facebook" role="menuitem" href="#" target="_blank" rel="noopener">Facebook</a>
+                        <button id="share-copy" role="menuitem" type="button">Copy link</button>
+                        <p class="share-note" id="share-note" hidden></p>
+                    </div>
+                </div>
+                <select id="track-select" aria-label="Displayed track" disabled></select>
+                <button id="mute-track" class="ghost" disabled title="Mute this track and play it yourself over the rest of the band">Mute this track</button>
+                <button id="notation-toggle" class="ghost" title="Toggle standard notation">Tab only</button>
+                <button id="delete-song" class="ghost danger" hidden>Remove song</button>
+            </div>
+        </header>
+
+        <div class="transport" role="toolbar" aria-label="Playback">
+            <button id="play" class="primary" disabled title="Play / pause (Space)">▶ Play</button>
+            <button id="stop" disabled title="Stop (S)">■</button>
+            <div class="speed">
+                <label for="speed">Speed</label>
+                <input type="range" id="speed" min="25" max="150" step="5" value="100">
+                <output id="speed-value">100%</output>
+                <span id="bpm" class="muted"></span>
+            </div>
+            <label class="toggle" title="Loop (L)"><input type="checkbox" id="loop"> Loop</label>
+            <label class="toggle" id="metronome-toggle" title="Metronome (M)"><input type="checkbox" id="metronome"> Click</label>
+            <label class="toggle" id="count-in-toggle"><input type="checkbox" id="count-in"> Count-in</label>
+            <label class="toggle" id="drums-toggle" title="Drums (D)"><input type="checkbox" id="drums" checked> Drums</label>
+            <select id="tone" aria-label="Guitar tone" title="Guitar tone">
+                <option value="distortion">Distortion</option>
+                <option value="crunch">Crunch</option>
+                <option value="clean">Clean</option>
+                <option value="original">File's own sound</option>
+            </select>
+            <button id="clear-selection" class="ghost" hidden>Clear section</button>
+        </div>
+
+        <div class="practice-row">
+            <section class="panel trainer" aria-labelledby="trainer-heading">
+                <h3 id="trainer-heading">Speed trainer</h3>
+                <p class="muted small">Loops the selected section (or the whole song) and speeds up after each set of clean loops.</p>
+                <div class="trainer-fields">
+                    <label>Start <input type="number" id="tr-start" min="25" max="150" value="60">%</label>
+                    <label>Step <input type="number" id="tr-step" min="1" max="50" value="5">%</label>
+                    <label>Target <input type="number" id="tr-target" min="25" max="150" value="100">%</label>
+                    <label>Loops per step <input type="number" id="tr-loops" min="1" max="20" value="2"></label>
+                </div>
+                <div class="trainer-actions">
+                    <button id="tr-toggle" disabled>Start trainer</button>
+                    <button id="tr-back" class="ghost" disabled title="Too fast? Drop one step">Step back</button>
+                    <span id="tr-status" class="muted"></span>
+                </div>
+            </section>
+
+            <section class="panel progress" aria-labelledby="progress-heading">
+                <h3 id="progress-heading">Progress</h3>
+                <dl class="stats" id="song-stats"></dl>
+                <div class="goal">
+                    <label><span id="goal-label">Goal tempo</span> <input type="number" id="goal-bpm" min="20" max="400" disabled> <span id="goal-unit">BPM</span></label>
+                    <div class="meter" id="goal-meter" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span></span></div>
+                </div>
+                <div class="tags" id="song-tags"></div>
+            </section>
+        </div>
+
+        <div class="video-area" id="video-area" hidden>
+            <div class="video-frame"><div id="yt-player"></div></div>
+
+            <section class="panel riff-tab" id="riff-tab-panel" aria-labelledby="riff-tab-heading" hidden>
+                <div class="riff-editor-head">
+                    <h3 id="riff-tab-heading">Tab</h3>
+                    <div class="tab-head-actions">
+                        <button id="tab-edit" class="ghost" hidden>Edit tab</button>
+                        <button id="tab-remove" class="ghost danger" hidden>Remove tab</button>
+                    </div>
+                </div>
+
+                <div class="tab-empty" id="tab-empty">
+                    <p class="muted">No tab for this riff yet. Add it one of two ways:</p>
+                    <div class="tab-empty-actions">
+                        <button id="tab-paste-btn">Paste or type tab</button>
+                        <button id="tab-link-btn">Use bars from a Guitar Pro song</button>
+                    </div>
+                </div>
+
+                <div class="tab-form" id="tab-paste-form" hidden>
+                    <textarea id="tab-text" rows="8" spellcheck="false" autocomplete="off" aria-label="Tab text"
+                              placeholder="e|----------------|&#10;B|----------------|&#10;G|----------------|&#10;D|----------------|&#10;A|-------2---3----|&#10;E|-0-0-0---0---0--|"></textarea>
+                    <p class="muted small" id="tab-paste-status"></p>
+                    <div class="tab-form-actions">
+                        <button id="tab-paste-save" class="primary">Save tab</button>
+                        <button class="ghost" data-tab-cancel>Cancel</button>
+                    </div>
+                </div>
+
+                <div class="tab-form" id="tab-link-form" hidden>
+                    <div class="tab-link-fields">
+                        <label>Song <select id="tab-song"></select></label>
+                        <label>Track <select id="tab-track"></select></label>
+                        <label>Bars <input type="number" id="tab-bar-start" min="1"> to <input type="number" id="tab-bar-end" min="1"></label>
+                    </div>
+                    <p class="muted small" id="tab-link-status"></p>
+                    <div class="tab-form-actions">
+                        <button id="tab-link-save" class="primary">Show these bars</button>
+                        <button class="ghost" data-tab-cancel>Cancel</button>
+                    </div>
+                </div>
+
+                <p class="muted small" id="tab-note"></p>
+                <div class="tab-view" id="tab-view" hidden><div id="riff-tab-score"></div></div>
+            </section>
+
+            <section class="panel riff-editor" aria-labelledby="riff-heading">
+                <div class="riff-editor-head">
+                    <h3 id="riff-heading">Riff drills</h3>
+                    <span class="muted small">Click the bar to jump. Keys: <kbd>[</kbd> set start, <kbd>]</kbd> set end</span>
+                </div>
+                <div class="timeline" id="riff-timeline" title="Click to jump to that point">
+                    <div class="timeline-draft" id="timeline-draft" hidden></div>
+                    <div class="timeline-playhead" id="timeline-playhead"></div>
+                </div>
+                <div class="riff-fields">
+                    <input id="riff-name" class="riff-name" placeholder="Riff name, e.g. Intro riff" maxlength="60" aria-label="Riff name">
+                    <label>Start <input id="riff-start" class="time" placeholder="0:00.0" aria-label="Riff start time"></label>
+                    <button id="riff-set-start" class="ghost" title="Use the video's current time ([)">Set to now</button>
+                    <label>End <input id="riff-end" class="time" placeholder="0:00.0" aria-label="Riff end time"></label>
+                    <button id="riff-set-end" class="ghost" title="Use the video's current time (])">Set to now</button>
+                </div>
+                <div class="riff-actions">
+                    <button id="riff-save" class="primary">Save as drill</button>
+                    <button id="riff-new" class="ghost">New riff</button>
+                    <button id="riff-delete" class="ghost danger" hidden>Delete riff</button>
+                </div>
+            </section>
+        </div>
+
+        <div class="score-wrap" id="score-wrap">
+            <div class="loading" id="loading" hidden>Loading…</div>
+            <p class="score-hint" id="score-hint">Drag across the tab to select a section to loop. Click a note to jump there.</p>
+            <div id="score"></div>
+        </div>
+    </main>
+</div>
+
+<div class="drop-overlay" id="drop-overlay" hidden>Drop a YouTube link or tab file to add it</div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

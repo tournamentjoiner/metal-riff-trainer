@@ -1,0 +1,8 @@
+\title "Legato Three-Note Runs"
+\artist "Original exercise"
+\tempo 90
+\track "Lead Guitar"
+:8 12.6{h tu 3} 14.6{h tu 3} 15.6{tu 3} 12.5{h tu 3} 14.5{h tu 3} 15.5{tu 3} 12.4{h tu 3} 14.4{h tu 3} 16.4{tu 3} 12.3{h tu 3} 14.3{h tu 3} 16.3{tu 3} |
+:8 13.2{h tu 3} 15.2{h tu 3} 17.2{tu 3} 14.1{h tu 3} 15.1{h tu 3} 17.1{tu 3} 17.1{p tu 3} 15.1{p tu 3} 14.1{tu 3} 17.2{p tu 3} 15.2{p tu 3} 13.2{tu 3} |
+:8 16.3{p tu 3} 14.3{p tu 3} 12.3{tu 3} 16.4{p tu 3} 14.4{p tu 3} 12.4{tu 3} 15.5{p tu 3} 14.5{p tu 3} 12.5{tu 3} 15.6{p tu 3} 14.6{p tu 3} 12.6{tu 3} |
+:1 12.6{v}

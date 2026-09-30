@@ -1,0 +1,12 @@
+\title "Stop-Start in 7/8"
+\artist "Original exercise"
+\tempo 140
+\track "Rhythm Guitar"
+\tuning E4 B3 G3 D3 A2 D2
+:16 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} r r 0.6{pm} 0.6{pm} :8 (3.6 3.5) r :16 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} |
+\ts 7 8
+:16 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} :8 (5.6 5.5) :16 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} :8 (6.6 6.5) (5.6 5.5) |
+\ts 4 4
+:16 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} r r 0.6{pm} 0.6{pm} :8 (1.6 1.5) r :16 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} |
+\ts 7 8
+:16 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} 0.6{pm} :8 (6.6 6.5) :4 (0.6 0.5 0.4) :8 r
