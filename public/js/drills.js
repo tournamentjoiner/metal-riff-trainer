@@ -3,12 +3,12 @@
 
 export const CATEGORIES = [
     'Rhythm', 'Drop D', 'Picking', 'Lead', 'Legato & Expression',
-    'Death Metal', 'Black Metal', 'Thrash', 'Deathcore', 'Metalcore', 'Djent', 'Industrial', 'Punk', 'Country',
+    'Death Metal', 'Black Metal', 'Thrash', 'Power Metal', 'Doom', 'Deathcore', 'Metalcore', 'Djent', 'Industrial', 'Punk', 'Country',
 ];
 export const LEVELS = { 1: 'Beginner', 2: 'Intermediate', 3: 'Advanced' };
 
 // Optional drill fields:
-//   tuning      'E standard' (default), 'Drop D' or 'Drop C'; checked against the file by the tests
+//   tuning      'E standard' (default), 'Drop D', 'Drop C' or 'C standard'; checked against the file by the tests
 //   meter       time signature(s) used, e.g. '4/4' or '4/4 + 7/8'
 //   startTempo  where the speed trainer starts; the file's own tempo is the goal (targetTempo)
 //   tone        a TONES key (tone.js) the drill switches to while it's open, e.g. 'clean'
@@ -16,6 +16,7 @@ export const TUNINGS = {
     'E standard': [64, 59, 55, 50, 45, 40],
     'Drop D': [64, 59, 55, 50, 45, 38],
     'Drop C': [62, 57, 53, 48, 43, 36],
+    'C standard': [60, 55, 51, 46, 41, 36],
 };
 
 export const DRILLS = [
@@ -434,6 +435,90 @@ export const DRILLS = [
         tip: 'Metronome: 16ths. Strict alternate picking between the muted low E and a melody on the A string. Every string change happens on a different pick direction, so go slow until it stays even. Pass: 3 clean loops at 170.',
     },
 
+    /* ---------- Power Metal ----------
+     * Original riffs and runs in the styles of Iron Maiden, Helloween,
+     * Stratovarius and DragonForce: gallops, major-key anthems and fast
+     * neoclassical lines over constant double kick. E standard.
+     */
+    {
+        file: 'pw-key-change-anthem.alphatex',
+        title: 'Key Change Anthem',
+        category: 'Power Metal', level: 1,
+        style: 'Helloween-style',
+        tags: ['power chords', 'position shifts', 'power metal'],
+        meter: '4/4', startTempo: 110, targetTempo: 160,
+        tip: 'Metronome: quarter notes, two strums per click. An E major chorus progression, then the same thing a whole step higher for the big final chorus. Look ahead to the next shape so every shift lands on the beat. Pass: 3 clean loops at 160.',
+    },
+    {
+        file: 'pw-gallop-anthem.alphatex',
+        title: 'Gallop Anthem',
+        category: 'Power Metal', level: 2,
+        style: 'Iron Maiden-style',
+        tags: ['gallops', 'power chords', 'power metal'],
+        meter: '4/4', startTempo: 110, targetTempo: 170,
+        tip: 'Metronome: quarter notes, one gallop per click. Gallop on two-note power chords rather than a single muted string, changing chords every beat or two. Keep the two 16ths even and don\'t let the chord changes rush them. Pass: 3 clean loops at 170.',
+    },
+    {
+        file: 'pw-neoclassical-fours.alphatex',
+        title: 'Neoclassical Fours',
+        category: 'Power Metal', level: 3,
+        style: 'Stratovarius-style',
+        tags: ['harmonic minor', 'neoclassical', 'scale sequences', 'alternate picking', 'power metal'],
+        meter: '4/4', startTempo: 80, targetTempo: 140,
+        tip: 'Metronome: 16ths. E harmonic minor coming down in groups of four: each group starts one scale note lower than the last. Alternate pick strictly, and accent the first note of each group so you don\'t lose your place. Pass: 3 clean loops at 140.',
+    },
+    {
+        file: 'pw-sextuplet-speed-runs.alphatex',
+        title: 'Sextuplet Speed Runs',
+        category: 'Power Metal', level: 3,
+        style: 'DragonForce-style',
+        tags: ['sextuplets', 'three notes per string', 'alternate picking', 'speed', 'power metal'],
+        meter: '4/4', startTempo: 80, targetTempo: 140,
+        tip: 'Metronome: quarter notes, six notes per click. Up and back down a three-notes-per-string shape on two strings, then the same in a higher position. The first note of each six must land on the click. Pass: 3 clean loops at 140.',
+    },
+
+    /* ---------- Doom ----------
+     * Original riffs in the styles of Black Sabbath, Candlemass, Electric Wizard
+     * and Saint Vitus: slow, heavy and precise. C standard (tune all six strings
+     * down two whole steps; the shapes are the same as E standard).
+     */
+    {
+        file: 'doom-let-it-ring.alphatex',
+        title: 'Let It Ring',
+        category: 'Doom', level: 1, tuning: 'C standard',
+        style: 'Electric Wizard-style',
+        tags: ['sustain', 'timing', 'power chords', 'doom'],
+        meter: '4/4', startTempo: 40, targetTempo: 60,
+        tip: 'Metronome: quarter notes. Huge chords held for their full length: four clicks, two clicks, one click. Count every beat out loud, and choke the chord exactly where the rest starts. Slow is harder than it sounds. Pass: 3 clean loops at 60.',
+    },
+    {
+        file: 'doom-tritone-crawl.alphatex',
+        title: 'Tritone Crawl',
+        category: 'Doom', level: 1, tuning: 'C standard',
+        style: 'Black Sabbath-style',
+        tags: ['power chords', 'tritone', 'doom'],
+        meter: '4/4', startTempo: 50, targetTempo: 70,
+        tip: 'Metronome: quarter notes. A slow power-chord riff that climbs to the tritone (the 6th-fret chord) in bar 2. Let every chord ring its full length and don\'t rush the eighth notes. Pass: 3 clean loops at 70.',
+    },
+    {
+        file: 'doom-wide-vibrato.alphatex',
+        title: 'Wide Vibrato',
+        category: 'Doom', level: 2, tuning: 'C standard',
+        style: 'Candlemass-style',
+        tags: ['vibrato', 'bends', 'sustain', 'doom'],
+        meter: '4/4', startTempo: 45, targetTempo: 70,
+        tip: 'Metronome: quarter notes. Slow minor pentatonic phrases with whole-step bends and long notes. Give every held note a wide, slow vibrato (about two pulses per click), rocking from the wrist. Pass: 3 clean loops at 70.',
+    },
+    {
+        file: 'doom-shuffle.alphatex',
+        title: 'Doom Shuffle',
+        category: 'Doom', level: 2, tuning: 'C standard',
+        style: 'Saint Vitus-style',
+        tags: ['shuffle', 'swing', 'triplets', 'doom'],
+        meter: '4/4', startTempo: 60, targetTempo: 90,
+        tip: 'Metronome: quarter notes. Every beat is swung long-short (a triplet with the middle note left out), over a shuffle beat. Feel the triplet: "one-(and)-a, two-(and)-a". Pass: 3 clean loops at 90.',
+    },
+
     /* ---------- Deathcore ----------
      * Original breakdowns and blast sections in the styles of Suicide Silence,
      * Thy Art Is Murder and Whitechapel. Drop C (the bands often go lower still;
@@ -715,6 +800,14 @@ const DRUM_GROOVES = {
     'th-downpicked-thrash-riff.alphatex': 'double-kick',
     'th-chromatic-skank-riff.alphatex': 'punk',
     'th-pedal-string-crossing.alphatex': 'double-kick',
+    'pw-key-change-anthem.alphatex': 'double-kick',
+    'pw-gallop-anthem.alphatex': 'double-kick',
+    'pw-neoclassical-fours.alphatex': 'double-kick',
+    'pw-sextuplet-speed-runs.alphatex': 'double-kick',
+    'doom-let-it-ring.alphatex': 'follow',
+    'doom-tritone-crawl.alphatex': 'follow',
+    'doom-wide-vibrato.alphatex': 'follow',
+    'doom-shuffle.alphatex': 'shuffle',
     'dc-downtempo-dead-stops.alphatex': 'follow',
     'dc-half-time-breakdown.alphatex': 'follow',
     'dc-polyrhythmic-breakdown.alphatex': 'follow',
