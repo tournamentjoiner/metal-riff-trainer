@@ -3,7 +3,7 @@
 
 export const CATEGORIES = [
     'Rhythm', 'Drop D', 'Picking', 'Lead', 'Legato & Expression',
-    'Death Metal', 'Black Metal', 'Thrash', 'Deathcore', 'Industrial', 'Punk', 'Country',
+    'Death Metal', 'Black Metal', 'Thrash', 'Deathcore', 'Metalcore', 'Djent', 'Industrial', 'Punk', 'Country',
 ];
 export const LEVELS = { 1: 'Beginner', 2: 'Intermediate', 3: 'Advanced' };
 
@@ -476,6 +476,89 @@ export const DRILLS = [
         tip: 'Metronome: quarter notes. Two bars of tremolo-picked fifths over a blast beat, then the same tempo drops into a half-time breakdown. The switch is the hard part: stop tremolo picking dead on beat 1 of bar 3. Pass: 3 clean loops at 150.',
     },
 
+    /* ---------- Metalcore ----------
+     * Original riffs in the styles of Killswitch Engage, Parkway Drive,
+     * As I Lay Dying and August Burns Red. Drop C.
+     */
+    {
+        file: 'mc-bounce-breakdown.alphatex',
+        title: 'Bounce Breakdown',
+        category: 'Metalcore', level: 1, tuning: 'Drop C',
+        style: 'Parkway Drive-style',
+        tags: ['breakdowns', 'palm muting', 'groove', 'metalcore'],
+        meter: '4/4', startTempo: 90, targetTempo: 140,
+        tip: 'Metronome: quarter notes, two chugs per click. A bouncy chug-chug-rest breakdown: the rests give it the bounce, so stop the string dead on each one. Pass: 3 clean loops at 140.',
+    },
+    {
+        file: 'mc-harmonized-thirds.alphatex',
+        title: 'Harmonized Thirds',
+        category: 'Metalcore', level: 2, tuning: 'Drop C',
+        style: 'Killswitch Engage-style',
+        tags: ['double stops', 'melody', 'harmony', 'metalcore'],
+        meter: '4/4', startTempo: 100, targetTempo: 150,
+        tip: 'Metronome: quarter notes, two notes per click. A C minor melody in thirds on the D and G strings, playing both guitar parts of a twin-guitar harmony at once. Use two fingers per shape and shift both together. Pass: 3 clean loops at 150.',
+    },
+    {
+        file: 'mc-melodic-gallops.alphatex',
+        title: 'Melodic Gallops',
+        category: 'Metalcore', level: 2, tuning: 'Drop C',
+        style: 'As I Lay Dying-style',
+        tags: ['gallops', 'double stops', 'palm muting', 'metalcore'],
+        meter: '4/4', startTempo: 110, targetTempo: 170,
+        tip: 'Metronome: quarter notes. Two palm-muted gallops on the low C, then a harmonized melody answer. Keep the gallops even (down-up-down) and let the thirds ring. Pass: 3 clean loops at 170.',
+    },
+    {
+        file: 'mc-skip-picked-pedal.alphatex',
+        title: 'Skip-Picked Pedal Melody',
+        category: 'Metalcore', level: 3, tuning: 'Drop C',
+        style: 'August Burns Red-style',
+        tags: ['string skipping', 'pedal point', 'alternate picking', 'metalcore'],
+        meter: '4/4', startTempo: 90, targetTempo: 150,
+        tip: 'Metronome: 16ths. Alternate between the muted low C and a melody on the D string, skipping over the G string every note. Mute the skipped string with your picking hand and keep the pick motion small. Pass: 3 clean loops at 150.',
+    },
+
+    /* ---------- Djent ----------
+     * Original riffs in the styles of Meshuggah, Periphery and TesseracT:
+     * odd groupings over a steady 4/4 pulse. Drop C (the bands mostly use
+     * 7- and 8-strings; the rhythms are what count here).
+     */
+    {
+        file: 'dj-chug-and-chime.alphatex',
+        title: 'Chug and Chime',
+        category: 'Djent', level: 1, tuning: 'Drop C',
+        style: 'Periphery-style',
+        tags: ['syncopation', 'palm muting', 'chords', 'djent'],
+        meter: '4/4', startTempo: 80, targetTempo: 120,
+        tip: 'Metronome: quarter notes. Tight syncopated chugs on the low C, answered by a ringing chord high on the neck. Kill the chugs instantly but let the chords ring for their full length. Pass: 3 clean loops at 120.',
+    },
+    {
+        file: 'dj-open-string-arpeggios.alphatex',
+        title: 'Open-String Arpeggios',
+        category: 'Djent', level: 2, tuning: 'Drop C', tone: 'clean',
+        style: 'TesseracT-style',
+        tags: ['arpeggios', 'open strings', 'string skipping', 'djent'],
+        meter: '4/4', startTempo: 70, targetTempo: 110,
+        tip: 'Metronome: quarter notes. Plays with a clean tone. Wide chord shapes picked one note at a time, with the open high D ringing through every chord. Hold each shape down for the whole half bar so the notes overlap. Pass: 3 clean loops at 110.',
+    },
+    {
+        file: 'dj-displaced-riff.alphatex',
+        title: 'Displaced Riff',
+        category: 'Djent', level: 2, tuning: 'Drop C',
+        style: 'Meshuggah-style',
+        tags: ['syncopation', 'rhythmic displacement', 'palm muting', 'djent'],
+        meter: '4/4', startTempo: 80, targetTempo: 130,
+        tip: 'Metronome: quarter notes; count 16ths. Each bar is the same riff, started one 16th later than the bar before. The snare stays on beat 3, and the riff slides past it. Pass: 3 clean loops at 130.',
+    },
+    {
+        file: 'dj-groups-of-five.alphatex',
+        title: 'Groups of Five',
+        category: 'Djent', level: 3, tuning: 'Drop C',
+        style: 'Meshuggah-style',
+        tags: ['polyrhythm', 'odd groupings', 'palm muting', 'djent'],
+        meter: '4/4', startTempo: 70, targetTempo: 120,
+        tip: 'Metronome: quarter notes. A five-16th figure (chug-chug-rest-chug-rest) repeats against 4/4, so it starts in a new place every time. Count "1-2-3-4-5" for the riff while tapping your foot on the beat; the chord at the end resets it. Pass: 3 clean loops at 120.',
+    },
+
     /* ---------- Industrial ----------
      * Original riffs in the styles of Rammstein, Ministry, Nine Inch Nails and
      * Fear Factory: machine-tight chugs locked to a straight drum grid. Drop D.
@@ -636,6 +719,14 @@ const DRUM_GROOVES = {
     'dc-half-time-breakdown.alphatex': 'follow',
     'dc-polyrhythmic-breakdown.alphatex': 'follow',
     'dc-blast-to-breakdown.alphatex': ['blast', 'blast', 'follow', 'follow'],
+    'mc-bounce-breakdown.alphatex': 'follow',
+    'mc-harmonized-thirds.alphatex': 'double-kick',
+    'mc-melodic-gallops.alphatex': 'double-kick',
+    'mc-skip-picked-pedal.alphatex': 'double-kick',
+    'dj-chug-and-chime.alphatex': 'follow',
+    'dj-open-string-arpeggios.alphatex': 'rock',
+    'dj-displaced-riff.alphatex': 'follow',
+    'dj-groups-of-five.alphatex': 'follow',
     'ind-staccato-stomp.alphatex': 'industrial',
     'ind-machine-accents.alphatex': 'industrial',
     'ind-octave-synth-line.alphatex': 'industrial',

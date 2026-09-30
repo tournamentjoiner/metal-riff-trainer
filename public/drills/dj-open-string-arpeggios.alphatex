@@ -1,0 +1,9 @@
+\title "Open-String Arpeggios"
+\artist "Original exercise"
+\tempo 110
+\track "Rhythm Guitar"
+\tuning D4 A3 F3 C3 G2 C2
+:8 0.6 7.4 6.2 0.1 1.5 3.4 2.3 0.1 |
+:8 3.6 5.3 5.1 0.1 3.5 0.3 1.2 0.1 |
+:8 0.6 7.4 6.2 0.1 1.5 3.4 2.3 0.1 |
+:8 3.6 5.3 5.1 0.1 :2 (0.6 7.4 6.2 0.1)
