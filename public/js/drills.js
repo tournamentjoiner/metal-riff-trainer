@@ -1,16 +1,20 @@
 // Built-in practice drills. All are original exercises (no copyrighted songs).
 // Files live in public/drills/ and are written in alphaTex.
 
-export const CATEGORIES = ['Rhythm', 'Drop D', 'Picking', 'Lead', 'Legato & Expression', 'Death Metal'];
+export const CATEGORIES = [
+    'Rhythm', 'Drop D', 'Picking', 'Lead', 'Legato & Expression',
+    'Death Metal', 'Deathcore', 'Industrial', 'Punk', 'Country',
+];
 export const LEVELS = { 1: 'Beginner', 2: 'Intermediate', 3: 'Advanced' };
 
 // Optional drill fields:
-//   tuning      'E standard' (default) or 'Drop D'; checked against the file by the tests
+//   tuning      'E standard' (default), 'Drop D' or 'Drop C'; checked against the file by the tests
 //   meter       time signature(s) used, e.g. '4/4' or '4/4 + 7/8'
 //   startTempo  where the speed trainer starts; the file's own tempo is the goal (targetTempo)
 export const TUNINGS = {
     'E standard': [64, 59, 55, 50, 45, 40],
     'Drop D': [64, 59, 55, 50, 45, 38],
+    'Drop C': [62, 57, 53, 48, 43, 36],
 };
 
 export const DRILLS = [
@@ -346,6 +350,171 @@ export const DRILLS = [
         meter: '4/4 + 7/8', startTempo: 100, targetTempo: 160,
         tip: 'The final test. 12 bars: tremolo and tritones, d-beat, a 7/8 bar, triplet bursts, then a half-time slam (the tempo drops from 160 to 100 at bar 7) and back up for the ending. Click on. Pass: one clean run at 100% speed.',
     },
+
+    /* ---------- Deathcore ----------
+     * Original breakdowns and blast sections in the styles of Suicide Silence,
+     * Thy Art Is Murder and Whitechapel. Drop C (the bands often go lower still;
+     * the shapes are the same).
+     */
+    {
+        file: 'dc-downtempo-dead-stops.alphatex',
+        title: 'Downtempo Dead Stops',
+        category: 'Deathcore', level: 1, tuning: 'Drop C',
+        style: 'Downtempo deathcore',
+        tags: ['breakdowns', 'muting', 'pinch harmonics', 'deathcore'],
+        meter: '4/4', startTempo: 50, targetTempo: 80,
+        tip: 'Metronome: quarter notes. Slow and huge: every rest must be a dead stop, so choke the chord with both hands exactly on the beat. The last note is a pinch harmonic with wide vibrato. Pass: 3 clean loops at 80.',
+    },
+    {
+        file: 'dc-half-time-breakdown.alphatex',
+        title: 'Half-Time Breakdown',
+        category: 'Deathcore', level: 2, tuning: 'Drop C',
+        style: 'Suicide Silence-style',
+        tags: ['breakdowns', 'syncopation', 'palm muting', 'deathcore'],
+        meter: '4/4', startTempo: 80, targetTempo: 130,
+        tip: 'Metronome: quarter notes; count 16ths in your head. The chugs land on "1", "a" and "and" (3+3+2), a classic breakdown rhythm. Keep the low C tightly palm muted and let the chords ring full. Pass: 3 clean loops at 130.',
+    },
+    {
+        file: 'dc-polyrhythmic-breakdown.alphatex',
+        title: 'Polyrhythmic Breakdown',
+        category: 'Deathcore', level: 3, tuning: 'Drop C',
+        style: 'Thy Art Is Murder-style',
+        tags: ['breakdowns', 'polyrhythm', 'syncopation', 'pinch harmonics', 'deathcore'],
+        meter: '4/4', startTempo: 70, targetTempo: 120,
+        tip: 'Metronome: quarter notes. The chug-chug-rest groups are 3 sixteenths long, so they drift across the beat and only line up again at the bar line. Don\'t follow the drums; follow the 16th count. Pass: 3 clean loops at 120.',
+    },
+    {
+        file: 'dc-blast-to-breakdown.alphatex',
+        title: 'Blast to Breakdown',
+        category: 'Deathcore', level: 2, tuning: 'Drop C',
+        style: 'Whitechapel-style',
+        tags: ['tremolo picking', 'breakdowns', 'transitions', 'deathcore'],
+        meter: '4/4', startTempo: 90, targetTempo: 150,
+        tip: 'Metronome: quarter notes. Two bars of tremolo-picked fifths over a blast beat, then the same tempo drops into a half-time breakdown. The switch is the hard part: stop tremolo picking dead on beat 1 of bar 3. Pass: 3 clean loops at 150.',
+    },
+
+    /* ---------- Industrial ----------
+     * Original riffs in the styles of Rammstein, Ministry, Nine Inch Nails and
+     * Fear Factory: machine-tight chugs locked to a straight drum grid. Drop D.
+     */
+    {
+        file: 'ind-staccato-stomp.alphatex',
+        title: 'Staccato Stomp',
+        category: 'Industrial', level: 1, tuning: 'Drop D',
+        style: 'Rammstein-style',
+        tags: ['staccato', 'muting', 'power chords', 'industrial'],
+        meter: '4/4', startTempo: 80, targetTempo: 110,
+        tip: 'Metronome: quarter notes. Short, clipped chord hits: release the fretting-hand pressure right after each one so the rest is silent. It should sound like a machine, with no ringing between hits. Pass: 3 clean loops at 110.',
+    },
+    {
+        file: 'ind-machine-accents.alphatex',
+        title: 'Machine Accents',
+        category: 'Industrial', level: 2, tuning: 'Drop D',
+        style: 'Ministry-style',
+        tags: ['accents', 'palm muting', 'alternate picking', 'industrial'],
+        meter: '4/4', startTempo: 100, targetTempo: 150,
+        tip: 'Metronome: 16ths. Constant palm-muted chugs with an open chord every third note (3+3+3+3+4). Keep the picking hand moving evenly and just open up the mute for the accents. Pass: 3 clean loops at 150.',
+    },
+    {
+        file: 'ind-octave-synth-line.alphatex',
+        title: 'Octave Synth Line',
+        category: 'Industrial', level: 2, tuning: 'Drop D',
+        style: 'Nine Inch Nails-style',
+        tags: ['octaves', 'string skipping', 'alternate picking', 'industrial'],
+        meter: '4/4', startTempo: 80, targetTempo: 120,
+        tip: 'Metronome: 16ths. A sequencer-style line jumping between the low D string and its octave on the D string (same fret). Mute the A string with the underside of your index finger so the skip stays clean. Pass: 3 clean loops at 120.',
+    },
+    {
+        file: 'ind-kick-sync-chugs.alphatex',
+        title: 'Kick-Sync Chugs',
+        category: 'Industrial', level: 3, tuning: 'Drop D',
+        style: 'Fear Factory-style',
+        tags: ['syncopation', 'palm muting', 'timing', 'industrial'],
+        meter: '4/4', startTempo: 90, targetTempo: 140,
+        tip: 'Metronome: quarter notes. The kick drum plays exactly with every chug, so any note that\'s early or late is obvious. Pick all downstrokes at first, then alternate once it\'s up to speed. Pass: 3 clean loops at 140.',
+    },
+
+    /* ---------- Punk ----------
+     * Original riffs in the styles of the Ramones, Green Day and Blink-182,
+     * Bad Religion and NOFX, and the Misfits. E standard.
+     */
+    {
+        file: 'pk-all-downstroke-eighths.alphatex',
+        title: 'All-Downstroke Eighths',
+        category: 'Punk', level: 1,
+        style: 'Ramones-style',
+        tags: ['downpicking', 'power chords', 'endurance', 'punk'],
+        meter: '4/4', startTempo: 120, targetTempo: 170,
+        tip: 'Metronome: quarter notes, two strums per click. Every strum is a downstroke. Keep your wrist loose and the motion small; if your forearm burns, drop the speed and build back up. Pass: 3 clean loops at 170.',
+    },
+    {
+        file: 'pk-mute-to-open.alphatex',
+        title: 'Mute to Open',
+        category: 'Punk', level: 1,
+        style: 'Green Day / Blink-182-style',
+        tags: ['palm muting', 'dynamics', 'power chords', 'punk'],
+        meter: '4/4', startTempo: 110, targetTempo: 160,
+        tip: 'Metronome: quarter notes. Bars 1-2 are palm-muted root notes (the verse), bars 3-4 are the same chords open and ringing (the chorus). Make the jump in volume obvious without speeding up. Pass: 3 clean loops at 160.',
+    },
+    {
+        file: 'pk-skate-punk-sixteenths.alphatex',
+        title: 'Skate Punk Sixteenths',
+        category: 'Punk', level: 2,
+        style: 'Bad Religion / NOFX-style',
+        tags: ['alternate picking', 'power chords', 'speed', 'punk'],
+        meter: '4/4', startTempo: 100, targetTempo: 150,
+        tip: 'Metronome: 16ths, four strums per click. Alternate strum two-note power chords, hitting only the two strings. Change chords exactly on the beat without a gap in the picking. Pass: 3 clean loops at 150.',
+    },
+    {
+        file: 'pk-chromatic-walk-ups.alphatex',
+        title: 'Chromatic Walk-Ups',
+        category: 'Punk', level: 2,
+        style: 'Misfits-style',
+        tags: ['power chords', 'chromatic', 'position shifts', 'punk'],
+        meter: '4/4', startTempo: 120, targetTempo: 170,
+        tip: 'Metronome: quarter notes. Each chord walks up (or down) a fret at a time into the next one. Slide the shape as one unit, keeping the same finger pressure. Pass: 3 clean loops at 170.',
+    },
+
+    /* ---------- Country ----------
+     * Original exercises in the styles of Johnny Cash, Merle Travis and Chet Atkins,
+     * and Brad Paisley. E standard. Set Tone to Clean for these.
+     */
+    {
+        file: 'ct-boom-chick-bass-lines.alphatex',
+        title: 'Boom-Chick Bass Lines',
+        category: 'Country', level: 1,
+        style: 'Johnny Cash-style',
+        tags: ['alternating bass', 'open chords', 'country'],
+        meter: '4/4', startTempo: 80, targetTempo: 120,
+        tip: 'Metronome: quarter notes. Set Tone to Clean. Bass note on the beat ("boom"), then a short strum of the top strings ("chick"), through E, A and B7, with a walk down back to E. Pass: 3 clean loops at 120.',
+    },
+    {
+        file: 'ct-travis-picking.alphatex',
+        title: 'Travis Picking',
+        category: 'Country', level: 2,
+        style: 'Merle Travis / Chet Atkins-style',
+        tags: ['hybrid picking', 'alternating bass', 'fingerstyle', 'country'],
+        meter: '4/4', startTempo: 60, targetTempo: 100,
+        tip: 'Metronome: quarter notes. Set Tone to Clean. Your thumb (or pick) plays the bass on every beat, alternating strings; your fingers pluck the higher notes in between. Get the thumb on autopilot first. Pass: 3 clean loops at 100.',
+    },
+    {
+        file: 'ct-chicken-pickin.alphatex',
+        title: "Chicken Pickin'",
+        category: 'Country', level: 2,
+        style: 'Brad Paisley-style',
+        tags: ['hybrid picking', 'dead notes', 'double stops', 'country'],
+        meter: '4/4', startTempo: 70, targetTempo: 110,
+        tip: 'Metronome: 16ths. Set Tone to Clean. Each x is a muted pick stroke; the real note after it is snapped with your middle finger so it pops. Keep the double stops short and bright. Pass: 3 clean loops at 110.',
+    },
+    {
+        file: 'ct-pedal-steel-bends.alphatex',
+        title: 'Pedal Steel Bends',
+        category: 'Country', level: 3,
+        style: 'Pedal steel imitation',
+        tags: ['bends', 'double stops', 'pitch accuracy', 'country'],
+        meter: '4/4', startTempo: 50, targetTempo: 80,
+        tip: 'Metronome: quarter notes. Set Tone to Clean. Bend one string a whole step while the note next to it holds still and keeps ringing. Bend with your ring finger (backed up by your middle) and keep the held note\'s finger arched so it doesn\'t get muted. Pass: 3 clean loops at 80.',
+    },
 ];
 
 // Drum groove generated for each drill (see drums.js); anything not listed gets a rock beat.
@@ -372,5 +541,21 @@ const DRUM_GROOVES = {
         'blast', 'blast', 'dbeat', 'dbeat', 'follow', 'double-kick',
         'follow', 'follow', 'follow', 'follow', 'blast', 'blast',
     ],
+    'dc-downtempo-dead-stops.alphatex': 'follow',
+    'dc-half-time-breakdown.alphatex': 'follow',
+    'dc-polyrhythmic-breakdown.alphatex': 'follow',
+    'dc-blast-to-breakdown.alphatex': ['blast', 'blast', 'follow', 'follow'],
+    'ind-staccato-stomp.alphatex': 'industrial',
+    'ind-machine-accents.alphatex': 'industrial',
+    'ind-octave-synth-line.alphatex': 'industrial',
+    'ind-kick-sync-chugs.alphatex': 'follow',
+    'pk-all-downstroke-eighths.alphatex': 'punk',
+    'pk-mute-to-open.alphatex': 'rock',
+    'pk-skate-punk-sixteenths.alphatex': 'punk',
+    'pk-chromatic-walk-ups.alphatex': 'punk',
+    'ct-boom-chick-bass-lines.alphatex': 'twostep',
+    'ct-travis-picking.alphatex': 'twostep',
+    'ct-chicken-pickin.alphatex': 'twostep',
+    'ct-pedal-steel-bends.alphatex': 'twostep',
 };
 for (const drill of DRILLS) drill.drums ??= DRUM_GROOVES[drill.file] ?? 'rock';

@@ -19,6 +19,9 @@ export const DRUM_STYLES = {
     dbeat: 'D-beat',
     follow: 'Kick follows the riff (half-time)',
     shuffle: 'Shuffle',
+    punk: 'Punk skank beat',
+    industrial: 'Industrial four-on-the-floor',
+    twostep: 'Country two-step',
 };
 
 /** Bar lengths and guitar note positions from a parsed alphaTab score. */
@@ -77,6 +80,37 @@ const PATTERNS = {
             if (i % 2) return;
             slot.add(OH);
             for (const d of shape[(i / 2) % 8]) slot.add(d);
+        });
+        return g;
+    },
+    punk(n) {
+        // Fast "oom-pah": kick on every beat, snare on every "and", hi-hat on all the eighths.
+        const g = grid(n);
+        g.forEach((slot, i) => {
+            if (i % 2) return;
+            slot.add(HH);
+            slot.add(i % 4 === 0 ? K : S);
+        });
+        return g;
+    },
+    industrial(n) {
+        // Machine-straight: kick on every beat, snare on 2 and 4, 16th hi-hats.
+        const g = grid(n);
+        g.forEach((slot, i) => {
+            slot.add(HH);
+            if (i % 4 === 0) slot.add(K);
+            if (i % 8 === 4) slot.add(S);
+        });
+        return g;
+    },
+    twostep(n) {
+        // Boom-chick: kick on 1 and 3, snare on 2 and 4, eighth-note hi-hats.
+        const g = grid(n);
+        g.forEach((slot, i) => {
+            if (i % 2) return;
+            slot.add(HH);
+            if (i % 8 === 0) slot.add(K);
+            if (i % 8 === 4) slot.add(S);
         });
         return g;
     },

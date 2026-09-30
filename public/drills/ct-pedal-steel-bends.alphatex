@@ -1,0 +1,8 @@
+\title "Pedal Steel Bends"
+\artist "Original exercise"
+\tempo 80
+\track "Lead Guitar"
+:2 (7.3{b (0 4)} 5.2) (6.3 5.2) |
+:2 (7.2{b (0 4)} 5.1) (5.2 5.1) |
+:2 (7.3{b (0 4)} 5.2) (6.3 5.2) |
+:4 (4.3 5.2) (6.3 5.2) :2 (6.3 5.2 5.1)

@@ -1,0 +1,9 @@
+\title "Half-Time Breakdown"
+\artist "Original exercise"
+\tempo 130
+\track "Rhythm Guitar"
+\tuning D4 A3 F3 C3 G2 C2
+:16 0.6{pm} r r 0.6{pm} r r 0.6{pm} r :8 0.6{pm} 0.6{pm} :4 (0.6 0.5 0.4) |
+:16 0.6{pm} r r 0.6{pm} r r 0.6{pm} r :4 (1.6 1.5 1.4) r |
+:16 0.6{pm} r r 0.6{pm} r r 0.6{pm} r :8 0.6{pm} 0.6{pm} :4 (0.6 0.5 0.4) |
+:16 0.6{pm} 0.6{pm} 0.6{pm} r 0.6{pm} 0.6{pm} r 0.6{pm} :2 (6.6 6.5 6.4)
