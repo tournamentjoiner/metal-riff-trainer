@@ -101,6 +101,7 @@ const state = {
     video: null,         // open YouTube video record
     draft: { start: null, end: null },  // riff editor range
     scoreTempo: 120,
+    userTone: 'distortion', // the listener's saved tone; drills with their own tone override it
     songs: [],
     activeTag: null,
     activeLevel: null,
@@ -200,6 +201,7 @@ api.playerReady.on(() => {
 
 api.scoreLoaded.on(score => {
     if (state.mode !== 'tab') return;
+    el.tone.value = state.current?.tone ?? state.userTone;
     applyTone(score);
     state.scoreTempo = score.tempo || 120;
     state.mutedTrack = null;
@@ -272,6 +274,7 @@ async function openDrill(drill) {
         tags: drill.tags,
         goalBpm: prefs.goalBpm ?? drill.targetTempo,
         file: drill.file,
+        tone: drill.tone,
     };
     beginLoad();
     if (drill.startTempo) {
@@ -320,8 +323,10 @@ function applyMutes() {
 }
 
 el.tone.addEventListener('change', () => {
+    // On a drill with its own tone (e.g. Clean for country) a change lasts only for that drill.
+    if (!state.current?.tone) state.userTone = el.tone.value;
     try {
-        localStorage.setItem('mrt:tone', el.tone.value);
+        localStorage.setItem('mrt:tone', state.userTone);
     } catch {
         // Preference just won't persist.
     }
@@ -1337,10 +1342,11 @@ function toast(message, isError = false) {
 // Start-up
 try {
     const savedTone = localStorage.getItem('mrt:tone');
-    if (savedTone && [...el.tone.options].some(o => o.value === savedTone)) el.tone.value = savedTone;
+    if (savedTone && [...el.tone.options].some(o => o.value === savedTone)) state.userTone = savedTone;
 } catch {
     // Storage unavailable; keep the default tone.
 }
+el.tone.value = state.userTone;
 api.metronomeVolume = 0;
 api.countInVolume = 0;
 await refreshVideos().catch(err => console.error(err));

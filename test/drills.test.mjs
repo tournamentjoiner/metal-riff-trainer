@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 import * as alphaTab from '@coderline/alphatab';
 import { DRILLS, CATEGORIES, LEVELS, TUNINGS } from '../public/js/drills.js';
+import { TONES } from '../public/js/tone.js';
 
 const DRILL_DIR = new URL('../public/drills/', import.meta.url);
 
@@ -31,6 +32,15 @@ test('every drill has valid metadata and a unique title', () => {
     }
     for (const c of CATEGORIES) {
         assert.ok(DRILLS.some(d => d.category === c), `category ${c} has no drills`);
+    }
+});
+
+test('drill tones are valid and country drills play clean', () => {
+    for (const d of DRILLS.filter(x => x.tone)) {
+        assert.ok(TONES[d.tone], `${d.file}: unknown tone ${d.tone}`);
+    }
+    for (const d of DRILLS.filter(x => x.category === 'Country')) {
+        assert.equal(d.tone, 'clean', `${d.file} should switch to the clean tone`);
     }
 });
 

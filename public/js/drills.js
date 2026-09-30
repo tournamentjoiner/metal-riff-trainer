@@ -11,6 +11,7 @@ export const LEVELS = { 1: 'Beginner', 2: 'Intermediate', 3: 'Advanced' };
 //   tuning      'E standard' (default), 'Drop D' or 'Drop C'; checked against the file by the tests
 //   meter       time signature(s) used, e.g. '4/4' or '4/4 + 7/8'
 //   startTempo  where the speed trainer starts; the file's own tempo is the goal (targetTempo)
+//   tone        a TONES key (tone.js) the drill switches to while it's open, e.g. 'clean'
 export const TUNINGS = {
     'E standard': [64, 59, 55, 50, 45, 40],
     'Drop D': [64, 59, 55, 50, 45, 38],
@@ -477,43 +478,43 @@ export const DRILLS = [
 
     /* ---------- Country ----------
      * Original exercises in the styles of Johnny Cash, Merle Travis and Chet Atkins,
-     * and Brad Paisley. E standard. Set Tone to Clean for these.
+     * and Brad Paisley. E standard. They switch the guitar tone to Clean while open.
      */
     {
         file: 'ct-boom-chick-bass-lines.alphatex',
         title: 'Boom-Chick Bass Lines',
-        category: 'Country', level: 1,
+        category: 'Country', level: 1, tone: 'clean',
         style: 'Johnny Cash-style',
         tags: ['alternating bass', 'open chords', 'country'],
         meter: '4/4', startTempo: 80, targetTempo: 120,
-        tip: 'Metronome: quarter notes. Set Tone to Clean. Bass note on the beat ("boom"), then a short strum of the top strings ("chick"), through E, A and B7, with a walk down back to E. Pass: 3 clean loops at 120.',
+        tip: 'Metronome: quarter notes. Bass note on the beat ("boom"), then a short strum of the top strings ("chick"), through E, A and B7, with a walk down back to E. Pass: 3 clean loops at 120.',
     },
     {
         file: 'ct-travis-picking.alphatex',
         title: 'Travis Picking',
-        category: 'Country', level: 2,
+        category: 'Country', level: 2, tone: 'clean',
         style: 'Merle Travis / Chet Atkins-style',
         tags: ['hybrid picking', 'alternating bass', 'fingerstyle', 'country'],
         meter: '4/4', startTempo: 60, targetTempo: 100,
-        tip: 'Metronome: quarter notes. Set Tone to Clean. Your thumb (or pick) plays the bass on every beat, alternating strings; your fingers pluck the higher notes in between. Get the thumb on autopilot first. Pass: 3 clean loops at 100.',
+        tip: 'Metronome: quarter notes. Your thumb (or pick) plays the bass on every beat, alternating strings; your fingers pluck the higher notes in between. Get the thumb on autopilot first. Pass: 3 clean loops at 100.',
     },
     {
         file: 'ct-chicken-pickin.alphatex',
         title: "Chicken Pickin'",
-        category: 'Country', level: 2,
+        category: 'Country', level: 2, tone: 'clean',
         style: 'Brad Paisley-style',
         tags: ['hybrid picking', 'dead notes', 'double stops', 'country'],
         meter: '4/4', startTempo: 70, targetTempo: 110,
-        tip: 'Metronome: 16ths. Set Tone to Clean. Each x is a muted pick stroke; the real note after it is snapped with your middle finger so it pops. Keep the double stops short and bright. Pass: 3 clean loops at 110.',
+        tip: 'Metronome: 16ths. Each x is a muted pick stroke; the real note after it is snapped with your middle finger so it pops. Keep the double stops short and bright. Pass: 3 clean loops at 110.',
     },
     {
         file: 'ct-pedal-steel-bends.alphatex',
         title: 'Pedal Steel Bends',
-        category: 'Country', level: 3,
+        category: 'Country', level: 3, tone: 'clean',
         style: 'Pedal steel imitation',
         tags: ['bends', 'double stops', 'pitch accuracy', 'country'],
         meter: '4/4', startTempo: 50, targetTempo: 80,
-        tip: 'Metronome: quarter notes. Set Tone to Clean. Bend one string a whole step while the note next to it holds still and keeps ringing. Bend with your ring finger (backed up by your middle) and keep the held note\'s finger arched so it doesn\'t get muted. Pass: 3 clean loops at 80.',
+        tip: 'Metronome: quarter notes. Bend one string a whole step while the note next to it holds still and keeps ringing. Bend with your ring finger (backed up by your middle) and keep the held note\'s finger arched so it doesn\'t get muted. Pass: 3 clean loops at 80.',
     },
 ];
 
